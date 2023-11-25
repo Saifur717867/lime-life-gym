@@ -26,31 +26,31 @@ const Schedules = () => {
                                 </div>
                                 <div className='space-y-2'>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-700 rounded-sm uppercase'>Tuesday</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Gym</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Spa</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Workout</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Yoga</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Yoga</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Workout</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Gym</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>spa</div>
                                 </div>
                                 <div className='space-y-2'>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-700 rounded-sm uppercase'>Wednesday</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Gym</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Workout</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Spa</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Workout</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Yoga</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Gym</div>
                                 </div>
                                 <div className='space-y-2 mt-4 md:mt-0 lg:mt-0'>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-700 rounded-sm uppercase'>Thursday</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Gym</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Spa</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Yoga</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Workout</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Yoga</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Gym</div>
                                 </div>
                                 <div className='space-y-2 mt-4 md:mt-0 lg:mt-0'>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-700 rounded-sm uppercase'>Friday</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Gym</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400  rounded-sm'>Spa</div>
-                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Workout</div>
                                     <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Yoga</div>
+                                    <div className='w-[100px] h-[50px] text-center bg-lime-400 rounded-sm'>Workout</div>
                                 </div>
                                 
                             </div>

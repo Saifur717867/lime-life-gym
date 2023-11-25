@@ -8,7 +8,7 @@ import Feature from "./Feature";
 import AboutUs from "./AboutUs";
 import NewsLetter from "./NewsLetter";
 import BlogCard from "./BlogCard";
-import ClassCard from "./ClassCard";
+import ClassCard from "../classes/ClassCard";
 
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
             <section>
                 <AboutUs></AboutUs>
             </section>
-            <section className="bg-white">
+            <section className="w-[85%] mx-auto py-20">
                 <ClassCard></ClassCard>
             </section>
             <section>

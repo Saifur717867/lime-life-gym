@@ -47,7 +47,7 @@ const BlogCard = () => {
                     }
                 </ul>
                 <div className="text-center">
-                <Link to='/blog'><button className="btn bg-[#51FF04] text-white">Read More</button></Link>
+                <Link to='/blog'><button className="btn bg-[#51FF04] border-transparent text-white">Read More</button></Link>
                 </div>
         </div>
     );

@@ -13,6 +13,7 @@ import TrainerDetail from "../pages/trainer/TrainerDetail";
 import Booked from "../pages/trainer/Booked";
 import Payment from "../pages/payment/Payment";
 import Classes from "../pages/classes/Classes";
+import Forum from "../pages/forum/Forum";
 
 
 const router = createBrowserRouter(
@@ -53,6 +54,10 @@ const router = createBrowserRouter(
                 {
                     path: '/classes',
                     element: <Classes></Classes>
+                },
+                {
+                    path: '/forum',
+                    element: <Forum></Forum>
                 },
                 {
                     path: '/dashboard',
