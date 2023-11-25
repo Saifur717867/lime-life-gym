@@ -1,4 +1,4 @@
-import logo from '../../../../public/images/logo.png';
+import logo from '../../../images/logo.png';
 
 const Footer = () => {
     return (
@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="lg:w-1/3">
                     <div className='lg:ml-32'>
                     <img className='w-1/3' src={logo} alt="" />
-                            <span className="self-center text-2xl font-semibold ml-3">Lime Lite</span>
+                            <span className="self-center text-2xl font-semibold ml-3">Lime Life</span>
                     </div>
                 </div>
                 <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">

@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import FavAndTitle from "../../components/helmet/FavAndTitle";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-import img from "../../../../public/images/signup.png";
-import coverImg from "../../../../public/images/signup.png";
+import img from "../../../images/signup.png";
+import coverImg from "../../../images/signup.png";
 import CoverHead from "../../components/coverimage/CoverHead";
 import app from "../../firsbase/firebase.config";
 import { GoogleAuthProvider, getAuth, signInWithPopup, updateProfile } from "firebase/auth";

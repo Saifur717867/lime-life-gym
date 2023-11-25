@@ -6,7 +6,13 @@ import SignUp from "../pages/signUp/SignUp";
 import LogIn from "../pages/login/LogIn";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Contact from "../pages/contact/Contact";
-import AddItem from "../pages/additem/AddItem";
+import Gallery from "../pages/gallery/Gallery";
+import Trainer from "../pages/trainer/Trainer";
+import AddTrainer from "../pages/additem/AddTrainer";
+import TrainerDetail from "../pages/trainer/TrainerDetail";
+import Booked from "../pages/trainer/Booked";
+import Payment from "../pages/payment/Payment";
+import Classes from "../pages/classes/Classes";
 
 
 const router = createBrowserRouter(
@@ -21,12 +27,32 @@ const router = createBrowserRouter(
                     element: <Home></Home>
                 },
                 {
-                    path: '/addItem',
-                    element: <AddItem></AddItem>
+                    path: '/trainer',
+                    element: <Trainer></Trainer>
                 },
                 {
-                    path: '/contact',
-                    element: <Contact></Contact>
+                    path: '/trainerDetail',
+                    element: <TrainerDetail></TrainerDetail>
+                },
+                {
+                    path: '/booked',
+                    element: <Booked></Booked>
+                },
+                {
+                    path: '/payment',
+                    element: <Payment></Payment>
+                },
+                {
+                    path: '/beTrainer',
+                    element: <AddTrainer></AddTrainer>
+                },
+                {
+                    path: '/gallery',
+                    element: <Gallery></Gallery>
+                },
+                {
+                    path: '/classes',
+                    element: <Classes></Classes>
                 },
                 {
                     path: '/dashboard',

@@ -1,5 +1,5 @@
 import FavAndTitle from "../../components/helmet/FavAndTitle";
-import img from "../../../../public/images/Company.png";
+import img from "../../../images/Company.png";
 import CoverHead from "../../components/coverimage/CoverHead";
 import ContactUs from "./ContactUs";
 

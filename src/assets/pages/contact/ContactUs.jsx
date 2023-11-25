@@ -1,4 +1,4 @@
-import img from "../../../../public/images/contact.png";
+import img from "../../../images/contact.png";
 
 const ContactUs = () => {
     return (

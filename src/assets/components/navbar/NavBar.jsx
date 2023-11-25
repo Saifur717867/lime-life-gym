@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import logo from '../../../../public/images/logo.png';
+import logo from '../../../images/logo.png';
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hook/auth/useAuth";
 
@@ -14,7 +14,6 @@ const NavBar = () => {
     // console.log(user)
 
     const navigationUsers = [
-        { title: "Dashboard", path: '/dashboard' },
         { title: "Analytics", path: '/analytics' },
         { title: "Profile", path: '/profile' },
         { title: "Settings", path: '/settings' },
@@ -22,9 +21,11 @@ const NavBar = () => {
 
     const navigation = [
         { title: "Home", path: '/' },
-        { title: "Contact Us", path: '/contact' },
-        { title: "Add Item", path: '/addItem' },
-        { title: "Our shop", path: '/ourShop' },
+        { title: "Gallery", path: '/gallery' },
+        { title: "Trainer", path: '/trainer' },
+        { title: "Classes", path: '/classes' },
+        { title: "Dashboard", path: '/dashboard' },
+        { title: "Forums", path: '/forum' },
 
     ]
 
@@ -42,7 +43,7 @@ const NavBar = () => {
                     <div className="flex items-center justify-between md:block">
                         <Link to='/'>
                             <img className="w-[60px] h-[50px]" src={logo} alt="" />
-                            <p>Lime Lite</p>
+                            <p>Lime Life</p>
                         </Link>
                         <div className="md:hidden">
                             <button className="text-gray-500 hover:text-gray-800"

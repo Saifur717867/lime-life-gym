@@ -1,9 +1,9 @@
 import CoverHead from "../../components/coverimage/CoverHead";
 import FavAndTitle from "../../components/helmet/FavAndTitle";
-import img from "../../../../public/images/signin.png";
+import img from "../../../images/signin.png";
 import { FaGoogle, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import singInImg from "../../../../public/images/signin.png";
+import singInImg from "../../../images/signin.png";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firsbase/firebase.config";
