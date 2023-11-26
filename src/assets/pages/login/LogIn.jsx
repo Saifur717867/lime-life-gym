@@ -8,10 +8,12 @@ import Swal from "sweetalert2";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firsbase/firebase.config";
 import useAuth from "../../hook/auth/useAuth";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 const LogIn = () => {
-    const {logIn} = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const { logIn } = useAuth();
 
     const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ const LogIn = () => {
                     text: 'Login Successfully!',
                 })
                 // console.log(result.data)
-                if(loggedInUser){
+                if (loggedInUser) {
                     navigate(location?.state ? location.state : '/')
                 }
                 // const user = {email};
@@ -38,7 +40,7 @@ const LogIn = () => {
                 // axios.post('https://b8a11-server-side-saifur717867.vercel.app/jwt', user,
                 // {withCredentials: true})
                 // .then(res => {
-                    
+
                 //     }
                 // })
             })
@@ -64,13 +66,34 @@ const LogIn = () => {
             .then(result => {
                 const signInUser = result.user;
                 console.log(signInUser)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Good job!',
-                    text: 'Login Successfully!',
-                })
+                const userInfo = {
+                    name: signInUser.displayName,
+                    email: signInUser.email,
+                    photo: signInUser.photoURL,
+                    role: 'member'
+                }
+                if(!signInUser.email){
+                    axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            // console.log('user added to the database')
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Good job!',
+                                text: 'Login Successfully!',
+                            })
+                        }
+
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Login Successfully!',
+                    })
+                }
                 navigate(location?.state ? location.state : '/')
-                
+
             })
             .catch(error => {
                 console.log(error)

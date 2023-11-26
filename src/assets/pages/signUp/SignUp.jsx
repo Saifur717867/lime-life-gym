@@ -9,6 +9,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup, updateProfile } from "fir
 import Swal from "sweetalert2";
 import useAuth from "../../hook/auth/useAuth";
 import { upLoadImage } from "../../components/utils/uploadImage";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 
 
@@ -16,8 +17,8 @@ import { upLoadImage } from "../../components/utils/uploadImage";
 const SignUp = () => {
 
 
-
-    const {createUser, logOut} = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const { createUser, logOut } = useAuth();
 
     const navigate = useNavigate();
 
@@ -29,31 +30,45 @@ const SignUp = () => {
         const password = e.target.password.value;
         const photo = e.target.photo.files[0];
         const image = await upLoadImage(photo);
-        console.log(image)
+        // console.log(image)
         console.log(image.data.display_url)
         const loadedImage = image.data.display_url
-        console.log({email, name, password, loadedImage})
+        // console.log({ email, name, password, loadedImage })
         if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(password)) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...!',
                 text: 'Minimum six characters, at least one uppercase letter, one lowercase letter, one number and one special character!',
-              })
+            })
         } else {
-                await  createUser(email, password, name, loadedImage)
-                        .then(result => {
-                         console.log(result.user)
-                     updateProfile(result.user, {
+            await createUser(email, password, name, loadedImage)
+                .then(result => {
+                    console.log(result.user)
+                    updateProfile(result.user, {
                         displayName: name,
                         photoURL: loadedImage,
                     })
-                        .then(() => console.log('profile update'))
+                        .then(() => {
+                            console.log('profile update')
+                            const userInfo = {
+                                name: name,
+                                email: email,
+                                photo: loadedImage,
+                                role: 'member'
+                            }
+                            axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    // console.log('user added to the database')
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Good job!',
+                                        text: 'Created your Account successfully!',
+                                    })
+                                }
+                            })
+                        })
                         .catch()
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Good job!',
-                        text: 'Created your Account successfully!',
-                      })
                     logOut()
                         .then()
                         .catch()
@@ -61,14 +76,8 @@ const SignUp = () => {
                     console.log(error)
                 })
             navigate(location?.state ? location.state : '/login');
-
         }
-
-
     }
-
-
-
 
 
     // sing in with google //
@@ -77,24 +86,43 @@ const SignUp = () => {
     const provider = new GoogleAuthProvider()
 
     const handleGoogle = () => {
-        // console.log("logged in")
         signInWithPopup(auth, provider)
             .then(result => {
                 const signInUser = result.user;
                 console.log(signInUser)
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Good job!',
-                    text: 'Login Successfully!',
-                })
+                const userInfo = {
+                    name: signInUser.displayName,
+                    email: signInUser.email,
+                    photo: signInUser.photoURL,
+                    role: 'member'
+                }
+                if(!signInUser.email){
+                    axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            // console.log('user added to the database')
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Good job!',
+                                text: 'Login Successfully!',
+                            })
+                        }
+                    })
+                }else{
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Login Successfully!',
+                    })
+                }
                 navigate(location?.state ? location.state : '/')
-                
+
             })
             .catch(error => {
                 console.log(error)
             })
     }
-    
+
     return (
         <div>
             <FavAndTitle title={'Bistro Boss | Sign Up'}></FavAndTitle>

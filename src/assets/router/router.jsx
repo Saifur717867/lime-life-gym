@@ -88,7 +88,7 @@ const router = createBrowserRouter(
             children: [
                 {
                     path: 'allSubscriber',
-                    element: <Subscriber></Subscriber>
+                    element: <Subscriber></Subscriber>,
                 },
                 {
                     path: 'allTrainer',

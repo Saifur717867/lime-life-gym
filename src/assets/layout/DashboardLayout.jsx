@@ -10,11 +10,11 @@ const DashboardLayout = () => {
         <div>
             <FavAndTitle title={'Lime Life | Dashboard'}></FavAndTitle>
             <div className="flex">
-            <div className="w-1/6 min-h-screen bg-orange-500">
+            <div className="w-1/6 min-h-screen bg-red-500">
                 <div className="flex justify-center">
                     <Link to='/'><img className="w-[100px] h-auto" src={img} alt="" /></Link>
                 </div>
-                <div className="text-black">
+                <div className="text-white">
                     <ul className="space-y-2">
                             <li><NavLink to='/dashboard/allSubscriber' className={({ isActive, isPending }) =>
                                                 isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
@@ -63,6 +63,30 @@ const DashboardLayout = () => {
                                             }>
                         <FaFolder className="inline-block mr-2 text-2xl"></FaFolder>
                         Add Forum
+                        </NavLink></li>
+                        <li><NavLink to='/dashboard/active' className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
+                                            }>
+                        <FaFolder className="inline-block mr-2 text-2xl"></FaFolder>
+                        Active Log
+                        </NavLink></li>
+                        <li><NavLink to='/dashboard/profile' className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
+                                            }>
+                        <FaFolder className="inline-block mr-2 text-2xl"></FaFolder>
+                        Profile Setting 
+                        </NavLink></li>
+                        <li><NavLink to='/dashboard/recommendClass' className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
+                                            }>
+                        <FaFolder className="inline-block mr-2 text-2xl"></FaFolder>
+                        Recommend Classes  
+                        </NavLink></li>
+                        <li><NavLink to='/dashboard/review' className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
+                                            }>
+                        <FaFolder className="inline-block mr-2 text-2xl"></FaFolder>
+                        Review  
                         </NavLink></li>
                     </ul>
                 </div>   
