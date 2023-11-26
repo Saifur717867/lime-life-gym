@@ -13,12 +13,6 @@ const NavBar = () => {
     }
     // console.log(user)
 
-    const navigationUsers = [
-        { title: "Analytics", path: '/analytics' },
-        { title: "Profile", path: '/profile' },
-        { title: "Settings", path: '/settings' },
-    ]
-
     const navigation = [
         { title: "Home", path: '/' },
         { title: "Gallery", path: '/gallery' },
@@ -83,30 +77,14 @@ const NavBar = () => {
                                     user
                                         ?
                                         <>
-                                            <div className="relative border-t lg:border-none">
-                                                <div className="">
-                                                    <button className="hidden w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 lg:focus:ring-2 lg:block"
-                                                        onClick={() => setState(!state)}
+                                            <button className="hidden w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 lg:focus:ring-2 lg:block"
                                                     >
                                                         <img
                                                             src={user.photoURL}
                                                             className="w-full h-full rounded-full"
                                                         />
                                                     </button>
-                                                </div>
-                                                <ul className={`bg-white top-14 right-0 mt-6 space-y-6 lg:absolute lg:border lg:rounded-md lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${state ? '' : 'lg:hidden'}`}>
-                                                    {
-                                                        navigationUsers.map((item, idx) => (
-                                                            <li key={idx}>
-                                                                <a className="block text-gray-600 hover:text-gray-900 lg:hover:bg-gray-50 lg:p-3" href={item.path}>
-                                                                    {item.title}
-                                                                </a>
-                                                            </li>
-                                                        ))
-                                                    }
                                                     <button onClick={handleSignOut} className="block py-3 px-4 font-medium text-center text-white bg-[#51FF04] hover:bg-lime-600 active:bg-lime-700 active:shadow-none rounded-lg shadow md:inline">Sign Out</button>
-                                                </ul>
-                                            </div>
                                         </>
                                         :
                                         <li>
