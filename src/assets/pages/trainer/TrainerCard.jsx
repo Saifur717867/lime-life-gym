@@ -39,7 +39,7 @@ const TrainerCard = ({trainer}) => {
                             </a>
                         </div>
                         <div className="py-6">
-                        <Link to='/trainerDetail'><button className="btn bg-lime-400 w-full border-transparent text-white">Know More</button></Link>
+                        <Link to='/trainerDetail'><button className="btn bg-[#51FF04] w-full border-transparent text-white">Know More</button></Link>
                         </div>
                     </div>
         </div>

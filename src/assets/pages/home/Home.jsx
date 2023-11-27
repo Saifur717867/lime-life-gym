@@ -8,7 +8,8 @@ import Feature from "./Feature";
 import AboutUs from "./AboutUs";
 import NewsLetter from "./NewsLetter";
 import BlogCard from "./BlogCard";
-import ClassCard from "../classes/ClassCard";
+import SomeClasses from "./SomeClasses";
+import SomeBlogs from "./SomeBlog";
 
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
                 <AboutUs></AboutUs>
             </section>
             <section className="w-[85%] mx-auto py-20">
-                <ClassCard></ClassCard>
+                <SomeClasses></SomeClasses>
             </section>
             <section>
                 <NewsLetter></NewsLetter>
@@ -35,7 +36,7 @@ const Home = () => {
                 <Testimonial></Testimonial>
             </div>
             <section className="bg-white">
-                <BlogCard></BlogCard>
+                <SomeBlogs></SomeBlogs>
             </section>
             <div>
             <Team></Team>
