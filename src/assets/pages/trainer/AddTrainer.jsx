@@ -6,6 +6,7 @@ import { useState } from "react";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import Swal from "sweetalert2";
 import useTrainer from "../../hook/useTrainer";
+import { upLoadImage } from "../../components/utils/uploadImage";
 
 
 const AddTrainer = () => {
@@ -16,40 +17,44 @@ const AddTrainer = () => {
     const [trainers] = useTrainer();
 
     const handleCheckboxChange = (event) => {
-        const isChecked  = event.target.checked;
+        const isChecked = event.target.checked;
         const value = event.target.value;
-        if(isChecked){
+        if (isChecked) {
             setCheckboxValues([...checkboxValues, value]);
-        }else {
-            setCheckboxValues(checkboxValues.filter((e) => e!= value))
+        } else {
+            setCheckboxValues(checkboxValues.filter((e) => e != value))
         }
-        
+
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const name = e.target.name.value;
         const day = e.target.day.value;
         const week = e.target.week.value;
-        const photo = e.target.photo.value;
+        const experience = e.target.experience.value;
+        const photo = e.target.photo.files[0];
+        const image = await upLoadImage(photo);
+        console.log(image.data.display_url);
+        const loadedImage = image.data.display_url;
         const description = e.target.description.value;
-        console.log({ email, name, day, week, photo, description, checkboxValues })
+        console.log({ email, name, day, week, loadedImage, experience, description, checkboxValues })
         const trainerInfo = {
-            email, name, day, week, photo, description, checkboxValues, status: 'pending'
+            email, name, day, week, loadedImage, experience, description, expert: checkboxValues, status: 'pending'
         }
         axiosPublic.post('/trainers', trainerInfo)
-        .then(res => {
-            if (res.data.insertedId) {
-                console.log('user added to the database')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Good job!',
-                    text: 'Applied successfully!',
-                })
-            }
-        })
-        .catch();
+            .then(res => {
+                if (res.data.insertedId) {
+                    console.log(res.data)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Good job!',
+                        text: 'Applied successfully!',
+                    })
+                }
+            })
+            .catch();
 
     }
 
@@ -90,13 +95,20 @@ const AddTrainer = () => {
                             </label>
                             <input type="number" name="week" placeholder="Available Time In A Week" className="input input-bordered" required />
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Picture</span>
+                            </label>
+                            <input type="file" name="photo" className="file-input file-input-bordered w-full" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Your Experience Year</span>
+                            </label>
+                            <input type="number" name="experience" placeholder="Your Experience Year" className="input input-bordered" required />
+                        </div>
                     </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Picture</span>
-                        </label>
-                        <input type="text" name="photo" placeholder="Inter Photo URL" className="input input-bordered" required />
-                    </div>
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Your Skills</span>
@@ -104,23 +116,23 @@ const AddTrainer = () => {
                         <div className="flex flex-row space-x-10">
                             <div className="flex">
                                 <label className="label">
-                                <input type="checkbox" value="Body Builder Expert"
-                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
-                                <p className="ml-2">Body Builder Expert</p>
+                                    <input type="checkbox" value="Body Builder Expert"
+                                        onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
+                                    <p className="ml-2">Body Builder Expert</p>
                                 </label>
                             </div>
                             <div className="flex">
-                            <label className="label">
-                                <input type="checkbox" value="Yoga Specialist"
-                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
-                                <p className="ml-2">Yoga Specialist</p>
+                                <label className="label">
+                                    <input type="checkbox" value="Yoga Specialist"
+                                        onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
+                                    <p className="ml-2">Yoga Specialist</p>
                                 </label>
                             </div>
                             <div className="flex">
-                            <label className="label">
-                                <input type="checkbox" value="Spa Beauty Expert"
-                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
-                                <p className="ml-2">Spa Beauty Expert</p>
+                                <label className="label">
+                                    <input type="checkbox" value="Spa Beauty Expert"
+                                        onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
+                                    <p className="ml-2">Spa Beauty Expert</p>
                                 </label>
                             </div>
                         </div>
@@ -129,10 +141,10 @@ const AddTrainer = () => {
                         <label className="label">
                             <span className="label-text">About Your Self</span>
                         </label>
-                        <textarea name="description" placeholder="About Your Self" className="textarea textarea-bordered textarea-lg w-full"></textarea>
+                        <textarea name="description" placeholder="About Your Self" className="textarea textarea-bordered textarea-lg w-full" required></textarea>
                     </div>
                     <div className="mt-6">
-                        <input className="bg-[#51FF04] hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Applied" />
+                        <input className="bg-[#51FF04] hover:bg-green-700 transition duration-1000 text-white text-2xl py-3 px-6 rounded-lg w-full cursor-pointer" type="submit" value="Apply Now" />
                     </div>
                 </form>
             </div>

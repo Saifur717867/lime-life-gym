@@ -1,6 +1,12 @@
+import useTrainer from "../../hook/useTrainer";
 
 
 const AllTrainer = () => {
+
+    const [trainers, loading, refetch] = useTrainer();
+    console.log(trainers)
+
+
     return (
         <div className="text-center py-20">
             <h3 className="text-4xl">All Trainers</h3>
@@ -18,29 +24,31 @@ const AllTrainer = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* row 1 */}
-                            <tr>
-                                <td>1</td>
+                            {
+                                trainers?.map((trainer, index) => <tr key={trainer._id}>
+                                <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                <img src={trainer.loadedImage} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="font-bold">{trainer.name}</div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <p>Example@gmail.com</p> 
+                                    <p>{trainer.email}</p> 
                                 </td>
-                                <td>Body Builder</td>
+                                <td>{trainer.expert}</td>
                                 <td>
                                     <button className="btn bg-blue-700">Pay</button>
                                 </td>
                             </tr>
+    )
+                            }
                         </tbody>
                     </table>
                 </div>
