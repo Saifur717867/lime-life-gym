@@ -6,25 +6,22 @@ import useSubscribers from '../../hook/useSubscribers';
 const NewsLetter = () => {
 
     const [subscribers] = useSubscribers();
-    // const {email} = subscribers;
-    // const subscribersEmail = subscribers.email;
-    console.log(subscribers)
     const axiosPublic = useAxiosPublic()
 
-    const handleNewsletter = e => {
+    const handleNewsletter = async (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
-        console.log(name, email)
+        // console.log(name, email)
+        const existEmail = await subscribers.find(item => item.email == email);
+        console.log(existEmail);
         const userInfo = {
             name: name,
             email: email,
             role: 'member'
         }
-        // const filterEmail = subscribers.filter(item === item.email === email);
-        // console.log(filterEmail)
-        if(!email){
+        if(!existEmail){
             axiosPublic.post('/users', userInfo)
         .then(res => {
             if (res.data.insertedId) {

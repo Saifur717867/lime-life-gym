@@ -1,9 +1,61 @@
 import CoverHead from "../../components/coverimage/CoverHead";
 import FavAndTitle from "../../components/helmet/FavAndTitle";
 import img from '../../../images/slide-1.jpg';
+import useAuth from "../../hook/auth/useAuth";
+import { useState } from "react";
+import useAxiosPublic from "../../hook/useAxiosPublic";
+import Swal from "sweetalert2";
+import useTrainer from "../../hook/useTrainer";
 
 
 const AddTrainer = () => {
+    const { user } = useAuth();
+    // console.log(user);
+    const [checkboxValues, setCheckboxValues] = useState([]);
+    const axiosPublic = useAxiosPublic();
+    const [trainers] = useTrainer();
+
+    const handleCheckboxChange = (event) => {
+        const isChecked  = event.target.checked;
+        const value = event.target.value;
+        if(isChecked){
+            setCheckboxValues([...checkboxValues, value]);
+        }else {
+            setCheckboxValues(checkboxValues.filter((e) => e!= value))
+        }
+        
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const name = e.target.name.value;
+        const day = e.target.day.value;
+        const week = e.target.week.value;
+        const photo = e.target.photo.value;
+        const description = e.target.description.value;
+        console.log({ email, name, day, week, photo, description, checkboxValues })
+        const trainerInfo = {
+            email, name, day, week, photo, description, checkboxValues, status: 'pending'
+        }
+        axiosPublic.post('/trainers', trainerInfo)
+        .then(res => {
+            if (res.data.insertedId) {
+                console.log('user added to the database')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Applied successfully!',
+                })
+            }
+        })
+        .catch();
+
+    }
+
+
+
+
     return (
         <div>
             <FavAndTitle title='Lime Life | Be A Trainer'></FavAndTitle>
@@ -12,13 +64,13 @@ const AddTrainer = () => {
             </div>
             <div className="w-[85%] mx-auto mb-10">
                 <h2 className="text-4xl underline font-bold pt-10 text-center">Be A Trainer</h2>
-                <form className="card-body">
+                <form onSubmit={handleSubmit} className="card-body">
                     <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-10">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" value={''} name="email" placeholder="Email" className="input input-bordered" required disabled />
+                            <input type="email" value={user?.email} name="email" placeholder="Email" className="input input-bordered" required disabled />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -51,16 +103,25 @@ const AddTrainer = () => {
                         </label>
                         <div className="flex flex-row space-x-10">
                             <div className="flex">
-                                <input type="checkbox" checked="" className="checkbox checkbox-accent" />
+                                <label className="label">
+                                <input type="checkbox" value="Body Builder Expert"
+                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
                                 <p className="ml-2">Body Builder Expert</p>
+                                </label>
                             </div>
                             <div className="flex">
-                                <input type="checkbox" checked="" className="checkbox checkbox-accent" />
+                            <label className="label">
+                                <input type="checkbox" value="Yoga Specialist"
+                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
                                 <p className="ml-2">Yoga Specialist</p>
+                                </label>
                             </div>
                             <div className="flex">
-                                <input type="checkbox" checked="" className="checkbox checkbox-accent" />
-                                <p className="ml-2">Beauty Expert</p>
+                            <label className="label">
+                                <input type="checkbox" value="Spa Beauty Expert"
+                                    onChange={handleCheckboxChange} className="checkbox checkbox-accent" />
+                                <p className="ml-2">Spa Beauty Expert</p>
+                                </label>
                             </div>
                         </div>
                     </div>

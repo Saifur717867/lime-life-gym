@@ -8,7 +8,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Contact from "../pages/contact/Contact";
 import Gallery from "../pages/gallery/Gallery";
 import Trainer from "../pages/trainer/Trainer";
-import AddTrainer from "../pages/additem/AddTrainer";
+import AddTrainer from "../pages/trainer/AddTrainer";
 import TrainerDetail from "../pages/trainer/TrainerDetail";
 import Booked from "../pages/trainer/Booked";
 import Payment from "../pages/payment/Payment";
