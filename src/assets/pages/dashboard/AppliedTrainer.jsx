@@ -31,6 +31,28 @@ const AppliedTrainer = () => {
         })
     }
 
+    const handleReject = id => {
+        fetch(`http://localhost:5000/trainers/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({status: 'reject'})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Good job!',
+                    text: 'Reject Successfully!',
+                })
+                refetch();
+            }
+        })
+    }
+
     return (
         <div className="text-center py-20">
             <h2 className="text-4xl">Applied Trainers</h2>
@@ -78,7 +100,7 @@ const AppliedTrainer = () => {
                                                     </div>
                                                         <form method="dialog">
                                                         <button onClick={() => handleConfirm(trainer._id)} className='btn btn-success mr-2 text-white'>Confirm</button>
-                                                        <button className='btn btn-error text-white'>Reject</button>
+                                                        <button onClick={() => handleReject(trainer._id)} className='btn btn-error text-white'>Reject</button>
                                                         </form>
                                                     </div>
                                                 </div>
