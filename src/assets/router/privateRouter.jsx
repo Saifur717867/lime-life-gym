@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../auth/AuthProvider";
+import { AuthContext } from "../authentication/AuthProvider/AuthProvider";
+// import { AuthContext } from "../auth/AuthProvider";
 
-const privateRouter = ({children}) => {
+const PrivateRouter = ({children}) => {
     
     const location = useLocation();
     // console.log(location)
@@ -21,4 +22,4 @@ const privateRouter = ({children}) => {
   
 };
 
-export default privateRouter;
+export default PrivateRouter;

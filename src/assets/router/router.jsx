@@ -29,6 +29,9 @@ import Recommend from "../pages/dashboard/Recommend";
 import Review from "../pages/dashboard/Review";
 import ClassDetails from "../pages/classes/ClassDetails";
 import BlogDetails from "../pages/forum/BlogDetails";
+import PrivateRouter from "./privateRouter";
+import AdminRoute from "./AdminRoute";
+import TrainerRoute from "./TrainerRoute";
 
 
 const router = createBrowserRouter(
@@ -54,7 +57,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/booked',
-                    element: <Booked></Booked>
+                    element: <PrivateRouter><Booked></Booked></PrivateRouter>
                 },
                 {
                     path: '/payment',
@@ -62,7 +65,7 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/beTrainer',
-                    element: <AddTrainer></AddTrainer>
+                    element: <PrivateRouter><AddTrainer></AddTrainer></PrivateRouter>
                 },
                 {
                     path: '/gallery',
@@ -98,36 +101,36 @@ const router = createBrowserRouter(
         },
         {
             path: 'dashboard',
-            element: <DashboardLayout></DashboardLayout>,
+            element: <PrivateRouter><DashboardLayout></DashboardLayout></PrivateRouter>,
             children: [
                 {
                     path: 'allSubscriber',
-                    element: <Subscriber></Subscriber>,
+                    element: <AdminRoute><Subscriber></Subscriber></AdminRoute>,
                 },
                 {
                     path: 'allTrainer',
-                    element: <AllTrainer></AllTrainer>
+                    element: <AdminRoute><AllTrainer></AllTrainer></AdminRoute>
                 },
                 {
                     path: 'appliedTrainer',
-                    element: <AppliedTrainer></AppliedTrainer>
+                    element: <AdminRoute><AppliedTrainer></AppliedTrainer></AdminRoute>
                 },
                 {
                     path: 'balance',
-                    element: <Balance></Balance>
+                    element: <AdminRoute></AdminRoute>
                 },
                 // Trainer Dashboard 
                 {
                     path: 'manageSlot',
-                    element: <ManageSlot></ManageSlot>
+                    element: <TrainerRoute><ManageSlot></ManageSlot></TrainerRoute>
                 },
                 {
                     path: 'manageMember',
-                    element: <ManageMember></ManageMember>
+                    element: <TrainerRoute><ManageMember></ManageMember></TrainerRoute>
                 },
                 {
                     path: 'addClass',
-                    element: <AddClass></AddClass>
+                    element: <TrainerRoute><AddClass></AddClass></TrainerRoute>
                 },
                 {
                     path: 'forum',

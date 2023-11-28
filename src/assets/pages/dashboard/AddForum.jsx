@@ -14,9 +14,9 @@ const AddForum = () => {
     // console.log(user)
 
     const trainer = trainers?.find(item => item.email == userEmail)
-    console.log(trainer)
-    const useName = trainer?.name;
-    const usePhoto = trainer?.loadedImage;
+    // console.log(trainer)
+    // const useName = trainer?.name;
+    // const usePhoto = trainer?.loadedImage;
     
 
     const axiosPublic = useAxiosPublic();
@@ -69,13 +69,13 @@ const AddForum = () => {
                             <label className="label">
                                 <span className="label-text">Full Name</span>
                             </label>
-                            <input type="text" name="name" value={useName} placeholder="Full Name" className="input input-bordered" required disabled />
+                            <input type="text" name="name" placeholder="Full Name" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Your Photo</span>
                             </label>
-                            <input type="text" name="picture" value={usePhoto} placeholder="Your Photo" className="input input-bordered" required disabled />
+                            <input type="text" name="picture" placeholder="Your Photo URL" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
