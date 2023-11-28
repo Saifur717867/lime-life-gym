@@ -5,6 +5,8 @@ const AllTrainer = () => {
 
     const [trainers, loading, refetch] = useTrainer();
     console.log(trainers)
+    const filter = trainers.filter(item => item.status === 'confirm');
+    console.log(filter)
 
 
     return (
@@ -25,7 +27,7 @@ const AllTrainer = () => {
                         </thead>
                         <tbody>
                             {
-                                trainers?.map((trainer, index) => <tr key={trainer._id}>
+                                filter?.map((trainer, index) => <tr key={trainer._id}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center gap-3">
