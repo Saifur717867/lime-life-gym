@@ -11,8 +11,9 @@ import useSubscribers from "../hook/useSubscribers";
 const DashboardLayout = () => {
 
     const { user } = useAuth();
-    // console.log(user);
-    const isUser = user.role == 'member';
+    console.log(user);
+    // const isUser = user.role == 'member';
+    // console.log(isUser)
     const [subscribers, loading, refetch] = useSubscribers();
 
     const [isAdmin] = useAdmin();
@@ -91,7 +92,7 @@ const DashboardLayout = () => {
                                 </>
                             }
                             {
-                                isUser && <>
+                                user && !isTrainer && !isAdmin && <>
                                     <li><NavLink to='/dashboard/active' className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-white underline py-3 px-6 rounded-lg bg-[#51FF04] block uppercase" : "py-3 px-6 uppercase"
                                     }>
