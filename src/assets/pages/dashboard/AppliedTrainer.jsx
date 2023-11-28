@@ -10,7 +10,7 @@ const AppliedTrainer = () => {
     console.log(filter)
 
     const handleConfirm = id => {
-        fetch(`http://localhost:5000/trainers/${id}`, {
+        fetch(`https://b8a12-server-side-saifur717867.vercel.app/trainers/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -32,7 +32,7 @@ const AppliedTrainer = () => {
     }
 
     const handleReject = id => {
-        fetch(`http://localhost:5000/trainers/${id}`, {
+        fetch(`https://b8a12-server-side-saifur717867.vercel.app/trainers/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
