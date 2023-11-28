@@ -3,13 +3,12 @@ import Slider from "../../components/carousel/Slider";
 import FavAndTitle from "../../components/helmet/FavAndTitle";
 import SectionTitle from "../../components/sectionTitle/SectionTitle";
 import Testimonial from "./Testimonial";
-import Team from "./Team";
 import Feature from "./Feature";
 import AboutUs from "./AboutUs";
 import NewsLetter from "./NewsLetter";
-import BlogCard from "./BlogCard";
 import SomeClasses from "./SomeClasses";
 import SomeBlogs from "./SomeBlog";
+import SomeTrainer from "./SomeTrainer";
 
 
 const Home = () => {
@@ -39,7 +38,7 @@ const Home = () => {
                 <SomeBlogs></SomeBlogs>
             </section>
             <div>
-            <Team></Team>
+                <SomeTrainer></SomeTrainer>
             </div>
         </div>
     );

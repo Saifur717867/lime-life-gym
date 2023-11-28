@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const AllClasses = ({ item }) => {
+    
 
     const { _id, email, name, userPicture, loadedImage, category, date, rating, title, description } = item;
 
@@ -67,13 +69,15 @@ const AllClasses = ({ item }) => {
                     </div>
                 </div>
                 <div className="p-6 pt-3">
-                    <button
-                        className="block w-full select-none rounded-lg bg-[#51FF04] py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button"
-                        data-ripple-light="true"
-                    >
-                        Join Now
-                    </button>
+                    <Link to={`/classes/${_id}`}>
+                        <button
+                            className="block w-full select-none rounded-lg bg-[#51FF04] py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                            data-ripple-light="true"
+                        >
+                            Join Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

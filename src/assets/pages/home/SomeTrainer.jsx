@@ -2,7 +2,7 @@ import useTrainer from "../../hook/useTrainer";
 import TrainerCard from "../trainer/TrainerCard";
 
 
-const Team = () => {
+const SomeTrainer = () => {
     const [trainers, loading, refetch] = useTrainer();
     return (
         <section className="py-6 dark:bg-gray-700 dark:text-gray-100">
@@ -11,7 +11,7 @@ const Team = () => {
                 <h1 className="text-4xl font-bold leadi text-center sm:text-5xl">Our talented Trainer Here for You</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-between mt-8">
                     {
-                        trainers?.map(trainer => <TrainerCard key={trainer._id} trainer={trainer}></TrainerCard>)
+                        trainers?.slice(0, 3).map(trainer => <TrainerCard key={trainer._id} trainer={trainer}></TrainerCard>)
                     }
                 </div>
             </div>
@@ -19,4 +19,4 @@ const Team = () => {
     );
 };
 
-export default Team;
+export default SomeTrainer;

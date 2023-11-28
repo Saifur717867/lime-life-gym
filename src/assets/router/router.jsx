@@ -27,6 +27,8 @@ import Active from "../pages/dashboard/Active";
 import Profile from "../pages/dashboard/Profile";
 import Recommend from "../pages/dashboard/Recommend";
 import Review from "../pages/dashboard/Review";
+import ClassDetails from "../pages/classes/ClassDetails";
+import BlogDetails from "../pages/forum/BlogDetails";
 
 
 const router = createBrowserRouter(
@@ -42,11 +44,13 @@ const router = createBrowserRouter(
                 },
                 {
                     path: '/trainer',
-                    element: <Trainer></Trainer>
+                    element: <Trainer></Trainer>,
+                    
                 },
                 {
-                    path: '/trainerDetail',
-                    element: <TrainerDetail></TrainerDetail>
+                    path: '/trainers/:id',
+                    element: <TrainerDetail></TrainerDetail>,
+                    loader: ({params}) => fetch(`http://localhost:5000/trainers/${params.id}`)
                 },
                 {
                     path: '/booked',
@@ -69,8 +73,18 @@ const router = createBrowserRouter(
                     element: <Classes></Classes>
                 },
                 {
+                    path: '/classes/:id',
+                    element: <ClassDetails></ClassDetails>,
+                    loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+                },
+                {
                     path: '/forum',
                     element: <Forum></Forum>
+                },
+                {
+                    path: '/forums/:id',
+                    element: <BlogDetails></BlogDetails>,
+                    loader: ({params}) => fetch(`http://localhost:5000/forums/${params.id}`)
                 },
                 {
                     path: '/signUp',

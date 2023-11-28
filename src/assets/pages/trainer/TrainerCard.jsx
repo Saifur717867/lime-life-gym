@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const TrainerCard = ({trainer}) => {
-    const {name, loadedImage, expert, experience, day} = trainer;
+    const {_id, name, loadedImage, expert, experience, day} = trainer;
     return (
         <div>
             <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-100 dark:text-gray-800">
@@ -39,7 +39,7 @@ const TrainerCard = ({trainer}) => {
                             </a>
                         </div>
                         <div className="py-6">
-                        <Link to='/trainerDetail'><button className="btn bg-[#51FF04] w-full border-transparent text-white">Know More</button></Link>
+                        <Link to={`/trainers/${_id}`}><button className="btn bg-[#51FF04] w-full border-transparent text-white">Know More</button></Link>
                         </div>
                     </div>
         </div>

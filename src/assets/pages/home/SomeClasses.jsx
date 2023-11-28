@@ -3,7 +3,7 @@ import AllClasses from '../classes/AllClasses';
 
 const SomeClasses = () => {
     const [classes, loading, refetch] = useClasses();
-    console.log(classes)
+    // console.log(classes)
 
     return (
         <div>
