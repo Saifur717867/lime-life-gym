@@ -9,6 +9,6 @@ My Assignment Features-----
 - There are three user dashboard, one for admin, another one for trainer and user profile; 
 - If user want to be trainer then he/she can apply for a trainer.
 - After applied admin can make the user trainer. 
-- There are many private route here, if user does not login then user can not applied for to be a trainer. 
+- There are many private route here, if user is not logged in then user can not applied for to be a trainer. 
 
 Live Link: https://mellow-blancmange-fb2c08.netlify.app
