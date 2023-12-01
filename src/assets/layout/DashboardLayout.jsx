@@ -11,7 +11,7 @@ import useSubscribers from "../hook/useSubscribers";
 const DashboardLayout = () => {
 
     const { user } = useAuth();
-    console.log(user);
+    // console.log(user);
     // const isUser = user.role == 'member';
     // console.log(isUser)
     const [subscribers, loading, refetch] = useSubscribers();
@@ -21,7 +21,7 @@ const DashboardLayout = () => {
 
     return (
         <div>
-            <FavAndTitle title={'Lime Life | Dashboard'}></FavAndTitle>
+            <FavAndTitle title= {'Lime Life | Dashboard'}></FavAndTitle>
             <div className="flex">
                 <div className="w-1/6 min-h-screen bg-red-500">
                     <div className="flex justify-center">

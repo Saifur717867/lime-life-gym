@@ -30,11 +30,12 @@ const BlogCard = () => {
                                         </div>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <div>
+                                        <div className="flex justify-start items-center">
                                             <img className="w-[60px] h-[60px] rounded-full" src={items.userPicture} alt="" />
+                                            <p>{items.name}</p>
                                         </div>
                                         <div>
-                                            <p>{items.name}</p>
+                                            <p className="bg-lime-200 py-2 px-4 rounded-md">{items.role}</p>
                                         </div>
                                     </div>
                                     <h3 className="text-lg text-gray-800 duration-150 group-hover:text-indigo-600 font-semibold">

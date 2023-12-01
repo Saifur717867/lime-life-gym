@@ -36,12 +36,12 @@ const AddTrainer = () => {
         const experience = e.target.experience.value;
         const photo = e.target.photo.files[0];
         const image = await upLoadImage(photo);
-        console.log(image.data.display_url);
+        // console.log(image.data.display_url);
         const loadedImage = image.data.display_url;
         const description = e.target.description.value;
         console.log({ email, name, day, week, loadedImage, experience, description, checkboxValues })
         const trainerInfo = {
-            email, name, day, week, loadedImage, experience, description, expert: checkboxValues, status: 'pending'
+            email, name, day, week, loadedImage, experience, description, role: 'trainer', expert: checkboxValues, status: 'pending'
         }
         axiosPublic.post('/trainers', trainerInfo)
             .then(res => {

@@ -8,7 +8,7 @@ import SomeBlogs from "../home/SomeBlog";
 const BlogDetails = () => {
     const details = useLoaderData();
     console.log(details)
-    const {name, loadedImage, userPicture, description, category, date, } = details;
+    const {name, loadedImage, userPicture, description, category, date } = details;
     return (
         <div>
             <section>

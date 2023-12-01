@@ -1,6 +1,8 @@
 import { FaEye } from 'react-icons/fa';
 import useTrainer from '../../hook/useTrainer';
 import Swal from 'sweetalert2';
+// import React, { useRef } from 'react';
+// import emailjs from '@emailjs/browser';
 
 const AppliedTrainer = () => {
 
@@ -10,7 +12,7 @@ const AppliedTrainer = () => {
     console.log(filter)
 
     const handleConfirm = id => {
-        fetch(`https://b8a12-server-side-saifur717867.vercel.app/trainers/${id}`, {
+        fetch(`http://localhost:5000/trainers/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -31,8 +33,24 @@ const AppliedTrainer = () => {
         })
     }
 
+    // const sendEmail = () => {
+    //     const templateParams = {
+    //       to_name: 'Customer Name',
+    //       to_email: `${trainer.email}`,  // customize this
+    //       // add other parameters according to your email template
+    //     };
+    
+    //     emailjs.send('service_of5wx74', 'template_eden8mg', templateParams)
+    //       .then((response) => {
+    //         console.log('Email sent:', response);
+    //       })
+    //       .catch((error) => {
+    //         console.error('Error sending email:', error);
+    //       });
+    //   };
+
     const handleReject = id => {
-        fetch(`https://b8a12-server-side-saifur717867.vercel.app/trainers/${id}`, {
+        fetch(`http://localhost:5000/trainers/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -49,9 +67,12 @@ const AppliedTrainer = () => {
                     text: 'Reject Successfully!',
                 })
                 refetch();
+                // sendEmail();
             }
         })
     }
+
+    
 
     return (
         <div className="text-center py-20">

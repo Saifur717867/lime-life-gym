@@ -14,10 +14,7 @@ const AddForum = () => {
     // console.log(user)
 
     const trainer = trainers?.find(item => item.email == userEmail)
-    // console.log(trainer)
-    // const useName = trainer?.name;
-    // const usePhoto = trainer?.loadedImage;
-    
+    console.log(trainer)
 
     const axiosPublic = useAxiosPublic();
 
@@ -33,9 +30,10 @@ const AddForum = () => {
         console.log(image.data.display_url);
         const loadedImage = image.data.display_url;
         const description = e.target.description.value;
+        const role = e.target.role.value;
         console.log({ email, name, userPicture, loadedImage, category, date, description })
         const forumInfo = {
-            email, name, userPicture, loadedImage, category, date, description
+            email, name, userPicture, loadedImage, category, date, description, role
         }
         axiosPublic.post('/forums', forumInfo)
             .then(res => {
@@ -81,7 +79,7 @@ const AddForum = () => {
                             <label className="label">
                                 <span className="label-text">Publish Day</span>
                             </label>
-                            <input type="date" name="date" placeholder="Available Time In A Week" className="input input-bordered" required />
+                            <input type="date" name="date" placeholder="Publish Date" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -100,6 +98,12 @@ const AddForum = () => {
                                 <option>Spa Beauty</option>
                             </select>
                         </div>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Role</span>
+                        </label>
+                        <input type="text" name="role" value={trainer?.role}placeholder="Role" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
