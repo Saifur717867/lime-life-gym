@@ -33,21 +33,21 @@ const AppliedTrainer = () => {
         })
     }
 
-    // const sendEmail = () => {
-    //     const templateParams = {
-    //       to_name: 'Customer Name',
-    //       to_email: `${trainer.email}`,  // customize this
-    //       // add other parameters according to your email template
-    //     };
+    const sendEmail = () => {
+        const templateParams = {
+          to_name: 'Customer Name',
+          to_email: `${trainer.email}`,  // customize this
+          // add other parameters according to your email template
+        };
     
-    //     emailjs.send('service_of5wx74', 'template_eden8mg', templateParams)
-    //       .then((response) => {
-    //         console.log('Email sent:', response);
-    //       })
-    //       .catch((error) => {
-    //         console.error('Error sending email:', error);
-    //       });
-    //   };
+        emailjs.send('service_of5wx74', 'template_eden8mg', templateParams)
+          .then((response) => {
+            console.log('Email sent:', response);
+          })
+          .catch((error) => {
+            console.error('Error sending email:', error);
+          });
+      };
 
     const handleReject = id => {
         fetch(`https://b8a12-server-side-saifur717867.vercel.app/trainers/${id}`, {
@@ -67,7 +67,7 @@ const AppliedTrainer = () => {
                     text: 'Reject Successfully!',
                 })
                 refetch();
-                // sendEmail();
+                sendEmail();
             }
         })
     }
