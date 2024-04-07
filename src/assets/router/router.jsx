@@ -53,7 +53,7 @@ const router = createBrowserRouter(
                 {
                     path: '/trainers/:id',
                     element: <TrainerDetail></TrainerDetail>,
-                    loader: ({params}) => fetch(`http://localhost:5000/trainers/${params.id}`)
+                    loader: ({params}) => fetch(`https://lime-life-server.vercel.app/trainers/${params.id}`)
                 },
                 {
                     path: '/booked',
@@ -78,7 +78,7 @@ const router = createBrowserRouter(
                 {
                     path: '/classes/:id',
                     element: <ClassDetails></ClassDetails>,
-                    loader: ({params}) => fetch(`http://localhost:5000/classes/${params.id}`)
+                    loader: ({params}) => fetch(`https://lime-life-server.vercel.app/classes/${params.id}`)
                 },
                 {
                     path: '/forum',
@@ -87,7 +87,7 @@ const router = createBrowserRouter(
                 {
                     path: '/forums/:id',
                     element: <BlogDetails></BlogDetails>,
-                    loader: ({params}) => fetch(`http://localhost:5000/forums/${params.id}`)
+                    loader: ({params}) => fetch(`https://lime-life-server.vercel.app/forums/${params.id}`)
                 },
                 {
                     path: '/signUp',
