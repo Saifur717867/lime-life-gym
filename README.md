@@ -11,4 +11,4 @@ My Assignment Features-----
 - After applied admin can make the user trainer. 
 - There are many private route here, if user is not logged in then user can not applied for to be a trainer. 
 
-Live Link: https://mellow-blancmange-fb2c08.netlify.app
+Live Link: https://harmonious-snickerdoodle-cc7afa.netlify.app
